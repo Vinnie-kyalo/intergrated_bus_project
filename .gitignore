@@ -14,6 +14,7 @@ __pycache__/
 # venv
 env
 venv
+bus_venv
 
 # other
 .DS_Store
@@ -29,3 +30,21 @@ apps/static/assets/node_modules
 apps/static/assets/yarn.lock
 apps/static/assets/.temp
 
+
+
+
+
+
+# Virtual Environment
+bus_venv/
+env/
+
+# PyCache
+__pycache__/
+
+# Database & Migrations
+db.sqlite3
+*.pyc
+
+# Environment Files
+.env

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Payment{% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Make Payment</h2>
+    <p><strong>Amount to Pay:</strong> Ksh {{ amount }}</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Pay with M-Pesa</button>
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+    // Optional JS for payment processing
+</script>
+{% endblock javascripts %}

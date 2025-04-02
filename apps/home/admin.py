@@ -1,8 +1,8 @@
-# -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 from django.contrib import admin
+from .models import Route, Bus, Passenger, Booking, Payment
 
-# Register your models here.
+admin.site.register(Route)
+admin.site.register(Bus)
+admin.site.register(Passenger)
+admin.site.register(Booking)
+admin.site.register(Payment)

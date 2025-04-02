@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Ticket Confirmation{% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Booking Confirmed</h2>
+    <p><strong>Passenger:</strong> {{ booking.passenger.name }}</p>
+    <p><strong>Bus:</strong> {{ booking.bus.name }}</p>
+    <p><strong>Seats:</strong> {{ booking.seats_booked }}</p>
+    <p><strong>Departure:</strong> {{ booking.bus.departure_time }}</p>
+    <p><strong>Status:</strong> Paid</p>
+    <button class="btn btn-primary" onclick="window.print()">Print Ticket</button>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

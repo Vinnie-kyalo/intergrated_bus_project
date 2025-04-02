@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Passenger Details{% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Enter Passenger Details</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Full Name:</label>
+        <input type="text" name="name" class="form-control" required>
+        <label>Email:</label>
+        <input type="email" name="email" class="form-control" required>
+        <label>Phone Number:</label>
+        <input type="text" name="phone" class="form-control" required>
+        <label>Seats:</label>
+        <input type="number" name="seats" class="form-control" required>
+        <button type="submit" class="btn btn-primary mt-3">Proceed to Payment</button>
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}
