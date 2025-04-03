@@ -13,22 +13,22 @@ def index(request):
     html_template = loader.get_template('home/index.html')
     return HttpResponse(html_template.render(context, request))
 
-@login_required(login_url="/login/")
-def pages(request):
-    context = {}
-    try:
-        load_template = request.path.split('/')[-1]
-        if load_template == 'admin':
-            return HttpResponseRedirect(reverse('admin:index'))
-        context['segment'] = load_template
-        html_template = loader.get_template(f'home/{load_template}')
-        return HttpResponse(html_template.render(context, request))
-    except TemplateDoesNotExist:
-        html_template = loader.get_template('home/page-404.html')
-        return HttpResponse(html_template.render(context, request))
-    except Exception:
-        html_template = loader.get_template('home/page-500.html')
-        return HttpResponse(html_template.render(context, request))
+# @login_required(login_url="/login/")
+# def pages(request):
+#     context = {}
+#     try:
+#         load_template = request.path.split('/')[-1]
+#         if load_template == 'admin':
+#             return HttpResponseRedirect(reverse('admin:index'))
+#         context['segment'] = load_template
+#         html_template = loader.get_template(f'home/{load_template}')
+#         return HttpResponse(html_template.render(context, request))
+#     except TemplateDoesNotExist:
+#         html_template = loader.get_template('home/page-404.html')
+#         return HttpResponse(html_template.render(context, request))
+#     except Exception:
+#         html_template = loader.get_template('home/page-500.html')
+#         return HttpResponse(html_template.render(context, request))
 
 # 🏠 Home View: Displays Available Routes
 def home(request):
@@ -83,7 +83,7 @@ def book_bus(request, bus_id):
 
         # ✅ Validate Input Fields
         if not name or not email or not phone or not seats:
-            return render(request, "home/add_passenger.html", {"bus": bus, "error": "All fields are required."})
+            return render(request, "home/add_passeger.html", {"bus": bus, "error": "All fields are required."})
 
         try:
             passenger = Passenger.objects.create(name=name, email=email, phone=phone)
@@ -93,9 +93,9 @@ def book_bus(request, bus_id):
 
         except Exception as e:
             print(f"ERROR: {e}")
-            return render(request, "home/add_passenger.html", {"bus": bus, "error": "Something went wrong! Please try again."})
+            return render(request, "home/add_passeger.html", {"bus": bus, "error": "Something went wrong! Please try again."})
 
-    return render(request, "home/add_passenger.html", {"bus": bus})
+    return render(request, "home/add_passeger.html", {"bus": bus})
 
 # 💳 Payment Processing View
 def process_payment(request, booking_id):
@@ -111,6 +111,6 @@ def process_payment(request, booking_id):
         )
         booking.status = "Confirmed"
         booking.save()
-        return render(request, "home/ticket.html", {"booking": booking})
+        return render(request, "home/ticket_print.html", {"booking": booking})
 
-    return render(request, "home/payment.html", {"booking": booking, "amount": amount})
+    return render(request, "home/payments.html", {"booking": booking, "amount": amount})
