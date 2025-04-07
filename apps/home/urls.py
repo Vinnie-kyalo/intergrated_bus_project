@@ -20,5 +20,10 @@ urlpatterns = [
     path("buses/", views.available_buses, name="available_buses"),
     path("book/<int:bus_id>/", views.book_bus, name="book_bus"),
     path("payment/<int:booking_id>/", views.process_payment, name="payment"),
+    
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('print-ticket/', views.print_ticket, name='print_ticket'),
+
 ]
 

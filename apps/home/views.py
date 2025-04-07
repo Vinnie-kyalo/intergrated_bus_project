@@ -114,3 +114,16 @@ def process_payment(request, booking_id):
         return render(request, "home/ticket_print.html", {"booking": booking})
 
     return render(request, "home/payments.html", {"booking": booking, "amount": amount})
+
+
+
+
+
+def about(request):
+    return render(request, 'home/about.html')  
+
+def contact(request):
+    return render(request, 'home/contact.html')
+
+def print_ticket(request):
+    return render(request, 'home/print_ticket.html')

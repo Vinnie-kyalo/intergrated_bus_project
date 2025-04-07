@@ -22,10 +22,14 @@
 {% endblock stylesheets %}
 
 {% block content %}
+<br>
+<br>
+<br>
+<br>
 
 <div class="container mt-5">
     <div class="search-container">
-        <h2 class="text-center mb-4">Search for Available Buses</h2>
+        <h2 class="text-center mb-4">Book Now </h2>
         <form action="{% url 'available_buses' %}" method="POST">
             {% csrf_token %}
             <div class="mb-3">
