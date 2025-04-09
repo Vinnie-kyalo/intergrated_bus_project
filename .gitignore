@@ -48,3 +48,8 @@ db.sqlite3
 
 # Environment Files
 .env
+
+
+# Ignore all migration files
+**/migrations/*.py
+!**/migrations/__init__.py  # but keep the __init__.py files
