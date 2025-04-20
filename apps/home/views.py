@@ -6,6 +6,10 @@ from django.template import loader, TemplateDoesNotExist
 from django.urls import reverse
 from .models import Bus, Route, Booking, Passenger, Payment
 import datetime
+from django.http import HttpResponse
+from weasyprint import HTML
+from django.template.loader import render_to_string
+from .models import Booking
 
 @login_required(login_url="/login/")
 def index(request):
@@ -127,3 +131,22 @@ def contact(request):
 
 def print_ticket(request):
     return render(request, 'home/print_ticket.html')
+
+
+def generate_ticket(request, booking_id):
+    # Get the booking instance
+    booking = Booking.objects.get(id=booking_id)
+
+    # Generate the HTML content for the ticket (similar to your template)
+    html_content = render_to_string('ticket_template.html', {'booking': booking})
+
+    # Create a PDF from the HTML
+    pdf = HTML(string=html_content).write_pdf()
+
+    # Set the response header to indicate this is a downloadable PDF
+    response = HttpResponse(pdf, content_type='application/pdf')
+
+    # Save the PDF with the passenger's name as the filename
+    response['Content-Disposition'] = f'attachment; filename="{booking.passenger.name}_ticket.pdf"'
+
+    return response

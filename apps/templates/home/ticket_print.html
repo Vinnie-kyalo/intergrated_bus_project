@@ -2,22 +2,65 @@
 
 {% block title %}Ticket Confirmation{% endblock %}
 
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<style>
+    .ticket {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 2px dashed #000;
+        border-radius: 15px;
+        padding: 30px;
+        font-family: Arial, sans-serif;
+        color: #000 !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .ticket h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #000 !important;
+        font-weight: bold;
+    }
+    .ticket p {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #000 !important;
+    }
+    .ticket strong {
+        color: #111 !important;
+    }
+    .print-button {
+        display: block;
+        margin: 30px auto 0;
+        font-weight: bold;
+    }
+</style>
+{% endblock stylesheets %}
 
 {% block content %}
-<br>
-<br>
+<br><br>
 
 <div class="container">
-    <h2>Booking Confirmed</h2>
-    <p><strong>Passenger:</strong> {{ booking.passenger.name }}</p>
-    <p><strong>Bus:</strong> {{ booking.bus.name }}</p>
-    <p><strong>Seats:</strong> {{ booking.seats_booked }}</p>
-    <p><strong>Departure:</strong> {{ booking.bus.departure_time }}</p>
-    <p><strong>Status:</strong> Paid</p>
-    <button class="btn btn-primary" onclick="window.print()">Print Ticket</button>
-</div>
+    <div class="ticket">
+        <h2>Travel Ticket</h2>
 
+        <!-- Add debug -->
+        <p style="font-size: 14px; color: red;">Debug: Booking ID {{ booking.id }}</p>
+
+        <p><strong>Passenger: </strong> {{ booking.passenger.name|default:"N/A" }}</p>
+        <p><strong>Bus: </strong> {{ booking.bus.name|default:"N/A" }}</p>
+        <p><strong>Seats: </strong> {{ booking.seats_booked|default:"N/A" }}</p>
+        <p><strong>Departure: </strong> {{ booking.bus.departure_time|default:"N/A" }}</p>
+        <p><strong>Status: </strong> <span style="color: green;">Paid</span></p>
+
+        <button class="btn btn-dark print-button" onclick="window.print()">🖨️ Print Ticket</button>
+    </div>
+</div>
 {% endblock content %}
 
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+<script>
+    console.log("DEBUG Passenger:", "{{ booking.passenger.name }}");
+    console.log("DEBUG Bus:", "{{ booking.bus.name }}");
+</script>
+{% endblock javascripts %}
