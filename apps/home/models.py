@@ -43,3 +43,15 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment of {self.amount} for {self.booking.passenger.name}"
+
+
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    message = models.TextField()
+    date_submitted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.name} ({self.email})"

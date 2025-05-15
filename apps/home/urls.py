@@ -22,8 +22,8 @@ urlpatterns = [
     path("payment/<int:booking_id>/", views.process_payment, name="payment"),
     
     path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
     path('print-ticket/', views.print_ticket, name='print_ticket'),
+    path('contact/', views.contact_view, name='contact'),
 
 ]
 

@@ -10,6 +10,8 @@ from django.http import HttpResponse
 from weasyprint import HTML
 from django.template.loader import render_to_string
 from .models import Booking
+from .models import Contact  
+
 
 @login_required(login_url="/login/")
 def index(request):
@@ -150,3 +152,19 @@ def generate_ticket(request, booking_id):
     response['Content-Disposition'] = f'attachment; filename="{booking.passenger.name}_ticket.pdf"'
 
     return response
+
+
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        if name and email and message:
+            Contact.objects.create(name=name, email=email, message=message)
+            return render(request, 'home/contact.html', {'success': True})
+        else:
+            return render(request, 'home/contact.html', {'error': 'All fields are required.'})
+    
+    return render(request, 'home/contact.html')

@@ -5,33 +5,28 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-
-<br>
-<br>
-<br>
-
-<br>
-<br>
-
-<div class="container">
-    <h2>Available Buses</h2>
-    {% if buses %}
-        {% for bus in buses %}
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ bus.name }}</h5>
-                    <p class="card-text">Departure: {{ bus.departure_time }}</p>
-                    <p class="card-text">Seats Available: {{ bus.total_seats }}</p>
-                    <p class="card-text">Price per Seat: Ksh {{ bus.price_per_seat }}</p>
-                    <a href="{% url 'book_bus' bus.id %}" class="btn btn-success">Book Now</a>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="container" style="max-width: 800px;">
+        <h2 class="text-center mb-4">Available Buses</h2>
+        {% if buses %}
+            {% for bus in buses %}
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bus.name }}</h5>
+                        <p class="card-text"><strong>Departure:</strong> {{ bus.departure_time }}</p>
+                        <p class="card-text"><strong>Seats Available:</strong> {{ bus.total_seats }}</p>
+                        <p class="card-text"><strong>Price per Seat:</strong> Ksh {{ bus.price_per_seat }}</p>
+                        <div class="text-end">
+                            <a href="{% url 'book_bus' bus.id %}" class="btn btn-success">Book Now</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No buses available for this route.</p>
-    {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="text-center text-muted">No buses available for this route.</p>
+        {% endif %}
+    </div>
 </div>
-
 {% endblock content %}
 
 {% block javascripts %}{% endblock javascripts %}

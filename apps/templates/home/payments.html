@@ -6,17 +6,18 @@
 
 {% block content %}
 
-<br>
-<br>
+<br><br><br><br><br>
+<center>
+    <div class="container">
+        <h2>Make Payment</h2>
+        <p><strong>Amount to Pay:</strong> Ksh {{ amount }}</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Pay with M-Pesa</button>
+        </form>
+    </div>
+</center>
 
-<div class="container">
-    <h2>Make Payment</h2>
-    <p><strong>Amount to Pay:</strong> Ksh {{ amount }}</p>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-success">Pay with M-Pesa</button>
-    </form>
-</div>
 
 {% endblock content %}
 

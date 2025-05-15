@@ -5,26 +5,33 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-<br>
-<br>
-<br>
-
-<div class="container">
-    <h2>Enter Passenger Details</h2>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <label>Full Name:</label>
-        <input type="text" name="name" class="form-control" required>
-        <label>Email:</label>
-        <input type="email" name="email" class="form-control" required>
-        <label>Phone Number:</label>
-        <input type="text" name="phone" class="form-control" required>
-        <label>Seats:</label>
-        <input type="number" name="seats" class="form-control" required>
-        <button type="submit" class="btn btn-primary mt-3">Proceed to Payment</button>
-    </form>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="container" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Enter Passenger Details</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" name="phone" id="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="seats">Seats:</label>
+                <input type="number" name="seats" id="seats" class="form-control" min="1" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Proceed to Payment</button>
+            </div>
+        </form>
+    </div>
 </div>
-
 {% endblock content %}
 
 {% block javascripts %}{% endblock javascripts %}
