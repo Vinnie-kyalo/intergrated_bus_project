@@ -16,7 +16,7 @@ urlpatterns = [
 
 
 
-    path("", views.home, name="home"),
+    # path("", views.home, name="home"),
     path("buses/", views.available_buses, name="available_buses"),
     path("book/<int:bus_id>/", views.book_bus, name="book_bus"),
     path("payment/<int:booking_id>/", views.process_payment, name="payment"),
